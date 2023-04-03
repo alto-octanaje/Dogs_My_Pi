@@ -1,0 +1,4 @@
+export const GET_ALL_DOGS="GET_ALL_DOGS";
+export const SET_LOANDING= 'SET_LOANDING';
+export const GET_DOGS_DETAILS='GET_DOGS_DETAILS';
+// export const GET_COUNTRYID="GET_COUNTRYID";
