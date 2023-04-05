@@ -23,13 +23,12 @@ export default function Home() {
   };
   // -----FindPaginado------------------------------
 
-  // stado local para el filtrado
+  // estado local para el filtrado
  
   const renderUpdate = () => {
-    setCurrenPage(2);
     setTimeout(() => {
-      setCurrenPage(1);
-    }, 1);
+      
+    }, 100);
   };
 
   const dispatch = useDispatch();
@@ -39,10 +38,7 @@ export default function Home() {
     dispatch(getDogs());
   }, [dispatch]);
 
-  //---------landingPage-------------
-  if (!loanding) {
-    return <Loanding />;
-  }
+ 
 
   const next = () => {
      
@@ -56,7 +52,7 @@ export default function Home() {
     <div>
       <div>Home</div>
 
-      <DogCard next={next} prev={prev} allDogsFull={allDogsFull} />
+      {   allDogs.length !==0 ? <DogCard next={next} prev={prev} allDogsFull={allDogsFull} /> : <Loanding />  }
 
       <div>
         <Paginado

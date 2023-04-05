@@ -1,9 +1,10 @@
-import { GET_ALL_DOGS,GET_DOGS_DETAILS, SET_LOANDING} from "../Action/Action_Type";
+import { GET_ALL_DOGS,GET_DOGS_DETAILS, SET_LOANDING,GET_DOGS_TEMPERAMENTS} from "../Action/Action_Type";
 
 const inicialState={
     dogs: [],
     seeDogs:[],
     dogsDetails:[],
+    temperaments:[],
     loanding:false,
 }
 
@@ -20,6 +21,11 @@ const  rootReducer=(state= inicialState,action)=> {
       
    case GET_DOGS_DETAILS:
     return{ ...state, dogsDetails:action.payload }
+
+    case GET_DOGS_TEMPERAMENTS:
+      return {
+        ...state,temperaments: action.payload
+      }
 
     
     default:
