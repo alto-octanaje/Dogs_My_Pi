@@ -46,7 +46,7 @@ const getDb = async () => {
 };
 
 const createBreed = async (name, image, height, weight, year, temperament) => {
-  console.log(name);
+  
   const breedExists = await Dog.findOne({ where: { name: name } });
   console.log(breedExists);
   if (breedExists === null || breedExists.length === 0) {
@@ -113,7 +113,6 @@ const getAll = async () => {
   const dogsApi = await getApi();
   const dogsDb = await getDb();
   return [...dogsApi, ...dogsDb];
-
 
 };
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogsTemperaments } from "../../Redux/Action/Action";
+import { getDogsTemperaments, postNewDog } from "../../Redux/Action/Action";
 import controllerFrom from "./controllerFrom";
 
 export default function Form() {
@@ -22,26 +22,28 @@ export default function Form() {
     temperaments: [],
     nameDogs: "",
     rangehight: { hmin: "", hmax: "" },
-    hight: "",
+    height: "",
     rangewight: { wmin: "", wmax: "" },
-    wight: "",
+    weight: "",
     years: "",
+    image: "",
   });
 
   const [errorNewDogs, setErrorNewDogs] = useState({
     temperaments: "",
     nameDogs: "",
     rangehight: { hmin: "", hmax: "" },
-    hight: "",
+    height: "",
     rangewight: { wmin: "", wmax: "" },
-    wight: "",
+    weight: "",
     years: "",
+    image:"",
   });
 
   const handleChange = (e) => {
     setNewDog({ ...newDog, [e.target.name]: e.target.value });
     setErrorNewDogs(controllerFrom({ 
-      ...newDog,nameDogs: 1, hight: 1, wight: 1, years: 1,temperaments: 1,
+      ...newDog,nameDogs: 1, height: 1, weight: 1, years: 1,temperaments: 1, image:1
       })
     );
   };
@@ -53,7 +55,7 @@ export default function Form() {
         rangehight: { ...newDog.rangehight, [e.target.name]: e.target.value },
       });
       setErrorNewDogs(
-        controllerFrom({...newDog,nameDogs: 1,hight: 1,wight: 1,years: 1,temperaments: 1,
+        controllerFrom({...newDog,nameDogs: 1,height: 1,weight: 1,years: 1,temperaments: 1,image:1
         })
       );
     }else{
@@ -70,7 +72,7 @@ export default function Form() {
         rangewight: { ...newDog.rangewight, [e.target.name]: e.target.value },
       });
       setErrorNewDogs(
-        controllerFrom({ ...newDog, nameDogs: 1, hight: 1, wight: 1, years: 1  })
+        controllerFrom({ ...newDog, nameDogs: 1, height: 1, weight: 1, years: 1,temperaments: 1 ,image:1})
       );
 
     }else{
@@ -79,8 +81,18 @@ export default function Form() {
         rangewight: { ...newDog.rangewight, [e.target.name]: e.target.value },
       });
 
-    }
-    
+    }    
+  };
+  const forNewDog =  (e) => {
+    // const temp = e.temperaments.map((i) => i);
+    return {
+      name: e.nameDogs,
+      image: e.image,
+      height: e.height,
+      weight: e.weight,
+      year: e.years,
+      temperament: e.temperaments
+    };
   };
 
   const handleSubmit = (e) => {
@@ -92,23 +104,27 @@ export default function Form() {
       !newDog.rangewight.wmin ||
       !newDog.rangewight.wmax ||
       !newDog.years ||
-      newDog.temperaments.length <1
+      newDog.temperaments.length ===0
     ) {
       setErrorNewDogs(controllerFrom({ ...newDog }));
-      alert("must bring all fields");
+      alert("must bring all fields1");
     }
      else {
-      if (newDog.rangehight.hmin && newDog.rangehight.hmax&& newDog.rangehight.hmin < newDog.rangehight.hmax    ) {
-        if (newDog.rangewight.wmin && newDog.rangewight.wmax && newDog.rangewight.wmin < newDog.rangewight.wmax) {
-          setNewDog({
-            ...newDog,
-            wight: newDog.rangewight.wmin + " - " + newDog.rangewight.wmax,
-            hight: newDog.rangehight.hmin + " - " + newDog.rangehight.hmax,
-          });
-          if (newDog.temperaments.length >0) {
-            alert("creando perro ");
+      if (newDog.rangehight.hmin && newDog.rangehight.hmax && newDog.rangehight.hmin < newDog.rangehight.hmax    ) {
+        if (newDog.rangewight.wmin && newDog.rangewight.wmax && newDog.rangewight.wmin < newDog.rangewight.wmax  ) {
+          if ( newDog.temperaments.length !==0) {
+            setNewDog({
+              ...newDog,
+              height: newDog.rangehight.hmin + " - " + newDog.rangehight.hmax,
+              weight: newDog.rangewight.wmin + " - " + newDog.rangewight.wmax,
+            });
+            if (newDog.weight && newDog.height ) {
+              dispatch( postNewDog(forNewDog(newDog)))
+            console.log(forNewDog);
+            }
+            
           }else{
-            alert("must select temperamen");
+            alert("must bring all fields2");
           }
           
         }else alert("The value is not corecto wight");
@@ -133,23 +149,30 @@ export default function Form() {
   const handleDelete = (id) => {
     setNewDog({
       ...newDog,
-      temperaments: newDog.temperaments.filter((e) => e != id.target.value),
+      temperaments: newDog.temperaments.filter((e) => e !== id.target.value),
     });
   };
-console.log(" mi error");
-  console.log(newDog);
+
+  const isUrl = /^(ftp|http|https):\/\/[^ "]+$/;
+
 
   return (
     <div>
       <div>Form</div>
       <form onSubmit={handleSubmit}>
+{/* imagen Dogs                                                                                   */}
+      <div>
+          <label >Image Dogs: </label>
+          <input type="text" onChange={handleChange} value={newDog.image} name="image" placeholder="Url image ..." />
+          {!isUrl.test(newDog.image) && <span style={{color: "red" }}> {errorNewDogs.image} </span> }
+        </div>
+
 {/* name Dogs                                                                                   */}
         <div>
           <label >Name Dogs: </label>
           <input type="text" onChange={handleChange} value={newDog.nameDogs} name="nameDogs" placeholder="Name ..." />
           {errorNewDogs.nameDogs&&  <span style={{color: "red"}} >{errorNewDogs.nameDogs}</span> }
-          {!newDog.nameDogs &&  <span style={{color: "red"}} >{errorNewDogs.nameDogs}</span> }
-
+          {/* {!newDog.nameDogs &&  <span style={{color: "red"}} >{errorNewDogs.nameDogs}</span> } */}
         </div>
 {/* height dogs                                                                            */}
         <div>
@@ -183,7 +206,7 @@ console.log(" mi error");
         <div>
           <label >Temperament: </label>
           <select name="temperaments" value={newDog.temperaments.length-1} onChange={handleTemperaments} >
-            <option hidden>Select Temperaments:</option>
+            <option >Select Temperaments:</option>
               {allTemperaments.map(e=> (
                 <option value={e.name} name="temperaments" id={e.id} key={e.id} >{e.name}</option>
               ))}
