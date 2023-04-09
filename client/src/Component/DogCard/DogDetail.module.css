@@ -1,0 +1,47 @@
+.styleDitails {
+  align-items: center;
+  margin: 0.3cm;
+  text-align: left;
+  color: rgb(4, 37, 5);
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  border: 2px solid #eae6eb;
+  border-radius: 0.25rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.styleDitails p {
+  font-weight: bold;
+  text-transform: capitalize;
+  line-height: 1.8;
+}
+.styleDitails span {
+  margin-right: 0.5rem;
+}
+
+.styleDitailsData {
+  background: #caf8ce;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  color: #429b02;
+}
+
+.containerImagen {
+  width: 500px;
+  height: 500px;
+  margin: 1em;
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 55vh; /* or any desired height */
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.title {
+  font-family: "Pacifico", cursive;
+  color: rgb(13, 40, 96);
+}

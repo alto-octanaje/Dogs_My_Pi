@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import style from "./DogCard.module.css";
+import React, { useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDogsDetails } from "../../Redux/Action/Action";
-import Loanding from "../../views/loanding/Loanding";
+
+import style from "./DogDetail.module.css";
+
 
 export default function DogDitails() {
-  // // const loanding = useSelector((state) => state.loanding);
+
   const { id } = useParams();
   console.log(id);
   const dispatch = useDispatch();
@@ -16,46 +17,40 @@ export default function DogDitails() {
   }, [dispatch, id]);
 
   const dogsDetails = useSelector((state) => state.dogsDetails);
-  console.log("estoy");
-  console.log(dogsDetails);
+
 
   return (
-    // <p>hola</p>
-    <article>
-      <div>
-        <img src={dogsDetails.image} alt={dogsDetails.name} />
+  <>
+      <div className={style.containerImagen} >
+        <img src={dogsDetails.image} alt={dogsDetails.name} className={style.image}  />
       </div>
-      <section>
+      <section className={style.styleDitails}>
+        <h1 className={style.title} >Details</h1>
         <p>
-          <span>name: </span>
+          <span className={style.styleDitailsData} >name: </span>
           {dogsDetails.name}
         </p>
-      </section>
-      <section>
+     
         <p>
-          <span>height: </span>
+          <span className={style.styleDitailsData} >height: </span>
           {dogsDetails.height}
         </p>
-      </section>
-      <section>
+      
         <p>
-          <span>weight: </span>
+          <span className={style.styleDitailsData}>weight: </span>
           {dogsDetails.weight}
         </p>
-      </section>
-      <section>
+      
         <p>
-          <span>year: </span>
+          <span className={style.styleDitailsData}>year: </span>
           {dogsDetails.year}
         </p>
-      </section>
-
-      <section>
+      
         <p>
-          <span>temperament: </span>
+          <span className={style.styleDitailsData}>temperament: </span>
           {dogsDetails.temperament}
         </p>
       </section>
-    </article>
+    </>
   );
 }

@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "../Card/Card";
-import { Link } from "react-router-dom";
+
 
 import style from "./DogCard.module.css";
 
 export default function DogCard(props) {
-  
   return (
     <div>
       <div>
