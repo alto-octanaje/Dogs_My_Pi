@@ -20,7 +20,7 @@ export default function DogCard(props) {
               id={e.id}
               name={e.name}
               image={e.image}
-              weight={e.weight}
+              year={e.year}
               temperament={e.temperament}
             />
           );

@@ -1,3 +1,5 @@
+import{GiReturnArrow} from "react-icons/gi";
+import style from "./Home.module.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -26,12 +28,12 @@ export default function Home() {
   const allDogsFull = allDogs.slice(
     indexOfFristCharacter,
     indexOfLastCountries
-    );
-    const paginado = (pageNumber) => {
-      setCurrenPage(pageNumber);
-    };
-    // -----FindPaginado------------------------------
-    const allTemperaments = useSelector((state) => state.temperaments);
+  );
+  const paginado = (pageNumber) => {
+    setCurrenPage(pageNumber);
+  };
+  // -----FindPaginado------------------------------
+  const allTemperaments = useSelector((state) => state.temperaments);
 
   // estado local para el filtrado
 
@@ -81,42 +83,42 @@ export default function Home() {
     renderUpdate();
   };
 
-
   const next = () => {
     console.log("netx");
-  }; 
+  };
   const prev = () => {
     console.log("prev");
   };
 
   return (
     <div>
-      <div>Home</div>
-      <div>
-        <select
-          onChange={(e) => {
-            handleFilterTemperaments(e);
-          }}
-        >
-          {allTemperaments.map((e) => (
-            <option value={e.name} name="temperaments" id={e.id} key={e.id}>
-              {e.name}
-            </option>
-          ))}
-        </select>
+      <div className={style.containerSections}>
+        
+        <div className={style.containerButtonFilter} >
+          <span className={style.spanStyle } >Bring Dogs From:</span>
+          <button onClick={handleDogsApi}> Api </button>
+          <button onClick={handleDogsBd}>DataBase </button>
+          <button onClick={handelAllDogs}>All Dogs</button>
+          <span>Order From:</span>
+          <button value="greater" onClick={handleFilterWeightMax}>
+            Weight greater
+          </button>
+          <button value="lower" onClick={handleFilterWeightMin}>
+            lower weight
+          </button>
+        </div>
+        <div className={style.containerTemperament} >
+          <span className={style.spanTemperament}  >Filter By Temperaments: </span>
+          <select className={style.selectTemperament} 
+            onChange={(e) => { handleFilterTemperaments(e);}} >
+            {allTemperaments.map((e) => (
+              <option value={e.name} name="temperaments" id={e.id} key={e.id}>
+                {!e.name ? "all temperaments" : e.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-      <div>
-        <button onClick={handleDogsApi}> Api </button>
-        <button onClick={handleDogsBd}>DataBase </button>
-        <button onClick={handelAllDogs}>All Dogs</button>
-        <button value="greater" onClick={handleFilterWeightMax}>
-          Weight greater
-        </button>
-        <button value="lower" onClick={handleFilterWeightMin}>
-          lower weight
-        </button>
-      </div>
-
       {allDogs.length !== 0 ? (
         <DogCard next={next} prev={prev} allDogsFull={allDogsFull} />
       ) : (
@@ -132,14 +134,13 @@ export default function Home() {
       </div>
 
       <Link to="/">
-        <button>Back</button>
+        <button className={style.buttoomHome} ><GiReturnArrow className={style.returnArrow} /></button>
       </Link>
     </div>
   );
 }
-
-
-// imagenes 
+ 
+// imagenes
 // https://i.pinimg.com/564x/53/6b/91/536b91d9c649f43c6f58301095a42a7e.jpg  perro sin encontrar
 // https://i.pinimg.com/564x/8c/ae/d8/8caed883546f1a3681f8d08d7412f90a.jpg    crear nuevo perro
 // https://i.pinimg.com/564x/a8/e1/7e/a8e17e06cb924f741fe206b04b43b418.jpg  imagen de perro principal

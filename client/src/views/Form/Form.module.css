@@ -1,0 +1,84 @@
+.sectionContainer {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  width: 70vw;
+  margin: 1rem auto;
+  background: #fff;
+  border-radius: 0.25rem;
+  max-width: 1170px;
+  gap: 1rem 2rem;
+  /* box-shadow: 22px 30px 10px rgba(21, 21, 21, 0.1); */
+}
+.formContainer{
+  box-shadow: 1px 15px 5px rgba(21, 21, 21, 0.1);
+  padding-inline-start: 50px;
+}
+
+
+.divForm {
+  width: 50vw;
+  justify-content: flex-start;
+  display: flex;
+  border-radius: 0.75rem;
+  background-color: #fffcfcdc;
+  padding: 5px 10px;
+  margin: 2px;
+}
+.divForm:hover {
+  box-shadow: 0px -4px 10px 0.03px #484747 inset;
+  color: black;
+}
+
+.labelForm:hover{
+  color: black;
+}
+.inputForm{
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.45rem;
+  width: 15vw;
+  padding: 0px 10px;
+}
+/*------------ style button create is type submit------------- */
+
+.createButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+/*------------ style button black ------------- */
+.buttoomBack {
+  display: inline-block;
+  background-color: #86d282f7;
+  color: #e6e621;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.buttoomBack:hover {
+  background-color: #0b9404f7;
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.returnArrow {
+  display: inline-block;
+  color: #15ad31;
+  font-size: 24px;
+  transform: rotate(45deg);
+  background-color: rgb(10, 10, 10);
+}
+.returnArrow:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+}

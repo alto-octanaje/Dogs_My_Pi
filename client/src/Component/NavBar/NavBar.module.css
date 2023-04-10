@@ -1,7 +1,46 @@
-.mainContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border-radius: 15px;
-    border: 1px solid black;
+.mainContainer {
+  color: rgb(63, 65, 2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; /* controla la distana en pg */
+  border-radius: 10px;
+  background: linear-gradient(40deg, #fff  30%, #bdbabadc 76%);
+  padding: 0.5rem;
+  opacity: 0.92;
+  border: 2px solid #659013;
+  margin: 1px;
 }
+.buttonHome {
+  color: white;
+  border: 1px;
+  padding: 4px;
+  size: 34em;
+  border-radius: 20%;
+  background-color: #6b705c;
+  margin-top: 8px;
+}
+.buttonHome:hover {
+  border: 1px solid rgba(5, 89, 11, 0.746);
+  padding: 4px;
+  background-color: #a0e61d;
+  color: black;
+}
+.formStyle {
+
+  margin-top: 10px;
+  background-color: #6b705c;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border: 1px;
+  padding: 3px;
+  border-radius: 10%;
+}
+.formStyle:hover {
+  padding: 4px;
+  background-color: #a0e61d;
+  color: black;
+  border: 1px solid rgba(5, 89, 11, 0.746);
+}
+
+

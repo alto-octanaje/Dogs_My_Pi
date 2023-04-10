@@ -1,0 +1,117 @@
+.containerSections {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-radius: 10px;
+  padding: 0.5rem;  
+  align-items: center;
+  background-color: #fbf2f2dc;
+}
+.containerSections:hover{
+    box-shadow: 0px -4px 5px 0.03px #000 inset;
+}
+
+.containerTemperament {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7;
+  padding: 5px;
+  border-radius: 5px;
+  color: #555555;
+  font-size: 20px;
+}
+
+.spanStyle {
+  margin-bottom: 10px;
+}
+
+.selectTemperament {
+  width: 250px;
+  height: 30px;
+  font-size: 16px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555555;
+  color: #f7f7f7;
+}
+.selectTemperament:active {
+    background-color: #e9f00d;
+  }
+
+.containerButtonFilter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7;
+  padding: 5px;
+  border-radius: 5px;
+  color: #555555;
+  font-size: 20px;
+}
+
+.container {
+  background-color: chocolate;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.containerButtonFilter > * {
+  margin-right: 10px;
+}
+button{
+    display: inline-block;
+    border: none;
+    background-color: #6b705c;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10%;
+}
+button:hover {
+    background-color: #ffffff;
+    transform: translateY(-2px);
+    color: #659013;
+  border: 2px solid black;
+
+  }
+button:active {
+    background-color: #e9f00d;
+  }
+  .buttoomHome{
+    display: inline-block;
+    background-color: #86d282f7;
+    color: #e6e621;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .buttoomHome:hover{
+    background-color: #0b9404f7;
+    transform: translateY(-2px);
+    color: #ffffff;
+  }
+  
+  .returnArrow {
+    display: inline-block;
+    color: #15ad31;
+    font-size: 24px;
+    transform: rotate(45deg);
+    background-color: rgb(10, 10, 10);
+  }
+  .returnArrow:hover{
+    /* background-color: #0b9404f7; */
+    transform: translateY(-2px);
+    color: #ffffff;
+  }

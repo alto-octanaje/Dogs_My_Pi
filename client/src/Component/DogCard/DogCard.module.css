@@ -1,5 +1,5 @@
 .divCards {
-    background-color: chartreuse;
+    background-color: rgba(106, 104, 104, 0.553);
     display: flex;
     flex-wrap: wrap;
     align-items: center;

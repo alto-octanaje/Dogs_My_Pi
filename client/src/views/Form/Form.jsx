@@ -1,8 +1,11 @@
+import{GiReturnArrow} from "react-icons/gi";
+import style from "./Form.module.css";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDogsTemperaments, postNewDog } from "../../Redux/Action/Action";
 import controllerFrom from "./controllerFrom";
+import { FaDog } from "react-icons/fa";
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -157,25 +160,24 @@ export default function Form() {
 
 
   return (
-    <div>
-      <div>Form</div>
-      <form onSubmit={handleSubmit}>
+    <section className={style.sectionContainer} >
+      <form className={style.formContainer}   onSubmit={handleSubmit}>
 {/* imagen Dogs                                                                                   */}
-      <div>
-          <label >Image Dogs: </label>
-          <input type="text" onChange={handleChange} value={newDog.image} name="image" placeholder="Url image ..." />
+      <div  className={style.divForm}>
+          <label className={style.labelForm} >Image Dogs: </label>
+          <input className={style.inputForm} type="text" onChange={handleChange} value={newDog.image} name="image" placeholder="Url image ..." />
           {!isUrl.test(newDog.image) && <span style={{color: "red" }}> {errorNewDogs.image} </span> }
         </div>
 
 {/* name Dogs                                                                                   */}
-        <div>
-          <label >Name Dogs: </label>
-          <input type="text" onChange={handleChange} value={newDog.nameDogs} name="nameDogs" placeholder="Name ..." />
+        <div className={style.divForm} >
+          <label className={style.labelForm}  >Name Dogs: </label>
+          <input className={style.inputForm} type="text" onChange={handleChange} value={newDog.nameDogs} name="nameDogs" placeholder="Name ..." />
           {errorNewDogs.nameDogs&&  <span style={{color: "red"}} >{errorNewDogs.nameDogs}</span> }
           {/* {!newDog.nameDogs &&  <span style={{color: "red"}} >{errorNewDogs.nameDogs}</span> } */}
         </div>
 {/* height dogs                                                                            */}
-        <div>
+        <div className={style.divForm} >
           <label >Height: </label>
           <input type="range" id="hmin" name="hmin" min="0" max="100"  value={newDog.rangehight.hmin|| 0 } onChange={handleRangeHight} />
           <label >{newDog.rangehight.hmin ||"Select..."} cm </label>
@@ -185,17 +187,16 @@ export default function Form() {
 
         </div>
 {/* weight dogs                                                                            */}
-        <div>
+        <div className={style.divForm}>
           <label >Weight: </label>
           <input type="range" id="wmin" name="wmin" min="0" max="100"  value={newDog.rangewight.wmin|| 0 } onChange={handleRangeWight} />
           <label >{newDog.rangewight.wmin ||"Select..."} cm </label>
           <input type="range" id="wmax" name="wmax" min="0" max="100"  value={newDog.rangewight.wmax|| 0 } onChange={handleRangeWight} />
           <label >{newDog.rangewight.wmax ||"Select..."} cm </label>
           {newDog.rangewight.wmin > newDog.rangewight.wmax && <span style={{color: "red"}} >{errorNewDogs.wight}</span> }
-
         </div>
 {/* years dogs                                                                            */}
-        <div>
+        <div className={style.divForm}>
           <label>Years: </label>
           <input type="range" id="year" name="years" min="0" max="70" value={newDog.years|| 0 } onChange={handleChange} />
           <label >{newDog.years || "Select..." } years </label>
@@ -203,7 +204,7 @@ export default function Form() {
 
         </div>
 {/* name temperaments                                                                             */}
-        <div>
+        <div className={style.divForm}>
           <label >Temperament: </label>
           <select name="temperaments" value={newDog.temperaments.length-1} onChange={handleTemperaments} >
             <option >Select Temperaments:</option>
@@ -227,14 +228,15 @@ export default function Form() {
             </li>
           </ul>
         </div>
-
-          <button type="submit" > CREATE NEW DOG </button>
+        <div className={style.createButton}>
+        <button  type="submit" > <FaDog  size={50}/>  CREATE NEW DOG </button>
+        </div>
       </form>
 
       <Link to="/home">
-        <button>Back</button>
+        <button className={style.buttoomBack} ><GiReturnArrow className={style.returnArrow} /> </button>
       </Link>
-    </div>
+    </section>
   );
 }
 
