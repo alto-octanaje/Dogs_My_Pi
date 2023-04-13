@@ -82,3 +82,14 @@
   transform: translateY(-2px);
   color: #ffffff;
 }
+/* ----button-Temperament */
+.buttomTemperement{
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.45rem  ;
+  width: 30px;
+  padding: 2px;
+  background-color: #de0e1c;
+  background: #ffffff;
+  color: black;
+  border: 2px solid black;
+}

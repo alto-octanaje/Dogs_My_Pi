@@ -8,5 +8,9 @@ export const FILTER_DOGS_BD = "FILTER_DOGS_BD";
 export const FILTER_DOGS_WEIGHT_MAX = "FILTER_DOGS_WEIGHT_MAX";
 export const FILTER_DOGS_WEIGHT_MIN = "FILTER_DOGS_WEIGHT_MIN";
 export const SEARCH_NAME_DOG = "SEARCH_NAME_DOG";
+export const FILTER_ZA = "A_Z";
+export const NEXT_PAGE = "NEXT_PAGE";
+export const PREV_PAGE = "PREV_PAGE";
+export const HANDLE_NUMBER = "HANDLE_NUMBER";
 
 // export const

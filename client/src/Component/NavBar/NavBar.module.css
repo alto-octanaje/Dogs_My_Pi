@@ -11,6 +11,7 @@
   margin: 1px;
 }
 .buttonHome {
+  
   color: white;
   border: 1px;
   padding: 4px;
@@ -26,14 +27,14 @@
   color: black;
 }
 .formStyle {
-
-  margin-top: 10px;
+  justify-content: space-around;
+  margin: 3px;
   background-color: #6b705c;
   display: flex;
   flex-direction: column;
   color: white;
   border: 1px;
-  padding: 3px;
+  padding: 5px;
   border-radius: 10%;
 }
 .formStyle:hover {
@@ -41,6 +42,28 @@
   background-color: #a0e61d;
   color: black;
   border: 1px solid rgba(5, 89, 11, 0.746);
+}
+.logoForm{
+  color: #fff;
+}
+.logoForm:hover {
+  color: black;
+}
+
+.buttonAbout {
+  color: white;
+  border: 1px;
+  padding: 4px;
+  size: 34em;
+  border-radius: 20%;
+  background-color: #6b705c;
+  margin-top: 10px;
+}
+.buttonAbout:hover {
+  border: 1px solid rgba(5, 89, 11, 0.746);
+  padding: 4px;
+  background-color: #a0e61d;
+  color: black;
 }
 
 

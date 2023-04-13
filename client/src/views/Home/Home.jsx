@@ -4,45 +4,48 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import DogCard from "../../Component/DogCard/DogCard";
+import Paginate from "../Paginate/Paginate"
 import {
   filterDogsApi,
   filterDogsBd,
   filterDogsweightMax,
   filterDogsweightMin,
   filterTemperaments,
+  filterZa,
   getDogs,
   getDogsTemperaments,
   setLoanding,
 } from "../../Redux/Action/Action";
-import Paginado from "../Paginado/Paginado";
 import Loanding from "../loanding/Loanding";
 
 export default function Home() {
   //----Paginado --------------------------
-
+  const { numPage } = useSelector((state) => state);
   const allDogs = useSelector((state) => state.seeDogs);
-  const [currentPage, setCurrenPage] = useState(1);
-  const [countriesPerPage] = useState(10);
-  const indexOfLastCountries = currentPage * countriesPerPage;
-  const indexOfFristCharacter = indexOfLastCountries - countriesPerPage;
-  const allDogsFull = allDogs.slice(
-    indexOfFristCharacter,
-    indexOfLastCountries
-  );
-  const paginado = (pageNumber) => {
-    setCurrenPage(pageNumber);
-  };
-  // -----FindPaginado------------------------------
+
+  let desde = (numPage - 1) * 10; // 5
+  let hasta = numPage * 10; // 10
+  let cantPages = Math.floor(allDogs.length / 10);
+  let allDogsFull = allDogs?.slice(desde, hasta);
+
+
+// ------------------final paginado---------------
+
+
+
+
+
   const allTemperaments = useSelector((state) => state.temperaments);
 
+  
   // estado local para el filtrado
-
   const renderUpdate = () => {
-    setCurrenPage(2);
+    
     setTimeout(() => {
-      setCurrenPage(1);
+     
     }, 100);
   };
+
 
   const dispatch = useDispatch();
 
@@ -83,17 +86,26 @@ export default function Home() {
     renderUpdate();
   };
 
-  const next = () => {
-    console.log("netx");
-  };
-  const prev = () => {
-    console.log("prev");
-  };
+// -------- state the button order Az -----
+
+const [stateButton, setStateButton ]= useState("Az");
+const myButton = useSelector(state => state.stateButton)
+
+  const handleOrderZA=(e)=>{
+    e.preventDefault();
+    dispatch(filterZa(e.target.value));
+    renderUpdate();
+    if(stateButton==="Az"){
+      setStateButton("Za");
+    }else{
+      setStateButton("Az");
+    }
+  }
+
 
   return (
-    <div>
-      <div className={style.containerSections}>
-        
+    <main>
+      <div className={style.containerSections}> 
         <div className={style.containerButtonFilter} >
           <span className={style.spanStyle } >Bring Dogs From:</span>
           <button onClick={handleDogsApi}> Api </button>
@@ -101,12 +113,14 @@ export default function Home() {
           <button onClick={handelAllDogs}>All Dogs</button>
           <span>Order From:</span>
           <button value="greater" onClick={handleFilterWeightMax}>
-            Weight greater
+            Weight Greater
           </button>
           <button value="lower" onClick={handleFilterWeightMin}>
-            lower weight
+            Weight Lower 
           </button>
+          <button value={stateButton} onClick={handleOrderZA} >{stateButton}</button>   
         </div>
+
         <div className={style.containerTemperament} >
           <span className={style.spanTemperament}  >Filter By Temperaments: </span>
           <select className={style.selectTemperament} 
@@ -119,24 +133,20 @@ export default function Home() {
           </select>
         </div>
       </div>
-      {allDogs.length !== 0 ? (
-        <DogCard next={next} prev={prev} allDogsFull={allDogsFull} />
+      {allDogsFull.length !== 0 ? (
+        <DogCard allDogsFull={allDogsFull} />
       ) : (
         <Loanding />
       )}
-
       <div>
-        <Paginado
-          countriesPrePage={countriesPerPage}
-          allDogs={allDogs.length} //nececito un valor numerico
-          paginado={paginado}
-        />
+      <Paginate cantPages={cantPages}></Paginate>
       </div>
+      
 
       <Link to="/">
         <button className={style.buttoomHome} ><GiReturnArrow className={style.returnArrow} /></button>
       </Link>
-    </div>
+    </main>
   );
 }
  

@@ -9,9 +9,14 @@ import {
   FILTER_DOGS_WEIGHT_MAX,
   FILTER_DOGS_WEIGHT_MIN,
   SEARCH_NAME_DOG,
+  FILTER_ZA,
+  NEXT_PAGE,
+  PREV_PAGE,
+  HANDLE_NUMBER
 } from "../Action/Action_Type";
 
 const inicialState = {
+  numPage: 1, 
   dogs: [],
   seeDogs: [],
   dogsDetails: [],
@@ -75,7 +80,7 @@ const rootReducer = (state = inicialState, action) => {
       const allDogsWeight = state.dogs.sort(compareweight);
       return { ...state, seeDogs: allDogsWeight };
   
-      case FILTER_DOGS_WEIGHT_MIN:
+    case FILTER_DOGS_WEIGHT_MIN:
         const getAverageweightM = (weigthRange) => {
           const [min, max] = weigthRange.split(" - ").map(Number);
           return (min + max) / 2;
@@ -92,19 +97,47 @@ const rootReducer = (state = inicialState, action) => {
 
 
     case SEARCH_NAME_DOG:
-      console.log("entre a mi reducer " );
-      console.log(action.payload);
-      const searchDogs= state.dogs;
-      console.log(searchDogs);
+      const searchDogs= state.seeDogs;
       const searchNameDogs= searchDogs.filter(e=> 
         e.name.toLowerCase().includes(action.payload.toLowerCase())
-      
          )
-        console.log(searchNameDogs);
       return{
-        ...state,
-        seeDogs:searchNameDogs
+        ...state, seeDogs:searchNameDogs
       }
+    
+    case FILTER_ZA:
+      let orderDogs=0;
+      const filterDogsZa= state.dogs.sort(function(a,b){
+        if (a.name > b.name) return 1
+        if (a.name<b.name) return -1
+        return 0;
+      });
+      if (action.payload==="Az") orderDogs= filterDogsZa
+      else orderDogs= filterDogsZa.reverse()
+
+      return{
+        ...state, seeDogs: orderDogs
+      }
+
+
+  
+    case NEXT_PAGE:
+      return {
+        ...state,
+        numPage: state.numPage + 1,
+      };
+
+    case PREV_PAGE:
+      return {
+        ...state,
+        numPage: state.numPage - 1,
+      };
+
+    case HANDLE_NUMBER:
+    return {
+      ...state,
+      numPage: action.payload,
+    };
 
     default:
       return { ...state };

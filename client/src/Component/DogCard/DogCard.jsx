@@ -7,11 +7,6 @@ import style from "./DogCard.module.css";
 export default function DogCard(props) {
   return (
     <div>
-      <div>
-        <button onClick={props.next}>next</button>
-        <button onClick={props.prev}>prev</button>
-      </div>
-
       <div className={style.divCards}>
         {props.allDogsFull.map((e) => {
           return (

@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Dog, Temperament } = require("../db");
+const {  Temperament } = require("../db");
 
 const getTemperament = async () => {
   try {
@@ -9,7 +9,7 @@ const getTemperament = async () => {
       const getTemperamentApi = await buscando.data.map((t) => {
         return t.temperament;
       });
-      console.log(getTemperamentApi);
+    
     const allUnitedTemperament = [
       ...new Set(getTemperamentApi.join().split(",").sort()),
     ];

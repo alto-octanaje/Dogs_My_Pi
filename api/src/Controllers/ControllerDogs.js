@@ -63,7 +63,6 @@ const createBreed = async (name, image, height, weight, year, temperament) => {
         const selectedTemperament = await Temperament.findOne({
           where: { name: nTemperament },
         });
-
         await newBreed.addTemperament(selectedTemperament);
       }
       return newBreed;
@@ -113,7 +112,6 @@ const getAll = async () => {
   const dogsApi = await getApi();
   const dogsDb = await getDb();
   return [...dogsApi, ...dogsDb];
-
 };
 
 module.exports = { getAll, createBreed, findId };

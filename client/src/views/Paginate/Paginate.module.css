@@ -1,0 +1,27 @@
+.containerPaginate {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 10px;
+  padding: 0.5rem;
+  align-items: center;
+  background-color: #bdbdbddc;
+}
+.containerButtonNP {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 500px;
+  border-radius: 10px;
+  padding: 0.5rem;
+  background-color: #fbf2f2dc;
+}
+.containerButtonNP:hover {
+  box-shadow: 0px -4px 5px 0.03px #000 inset;
+}
+.allNum {
+  display: flex;
+  gap: 10px;
+}
